@@ -30,4 +30,5 @@ Feature: Buy a product
     And Verify final price
     And Verify Payment Data
     And I place the order
-
+    And Verify Order Complete page message is "Checkout Complete"
+    And I click continue shopping button
