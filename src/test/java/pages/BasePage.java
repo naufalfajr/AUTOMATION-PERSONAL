@@ -60,10 +60,6 @@ public class BasePage {
             throw new IllegalArgumentException("Locator type not supported for UiScrollable: " + locator);
         }
 
-        if (uiSelector == null) {
-            throw new IllegalArgumentException("Could not build UiSelector from locator: " + locator);
-        }
-
         String uiAutomatorString = "new UiScrollable(new UiSelector().scrollable(true))" + ".scrollIntoView("+uiSelector+");";
 
         return driver.findElement(AppiumBy.androidUIAutomator(uiAutomatorString));
