@@ -10,13 +10,15 @@ public class DriverFactory {
     private static final ThreadLocal<AndroidDriver> driver = new ThreadLocal<>();
 
     public static void initializeDriver() {
-        if (driver == null) {
+        if (driver.get() == null) {
             try {
                 UiAutomator2Options options = new UiAutomator2Options();
                 options.setPlatformName(ConfigReader.get("platformName"));
                 options.setAutomationName(ConfigReader.get("automationName"));
                 options.setDeviceName(ConfigReader.get("deviceName"));
-                options.setApp(System.getProperty("user.dir") + "/" + ConfigReader.get("app"));
+                options.setApp(System.getProperty("user.dir") + "/src/test/resources/" + ConfigReader.get("app"));
+                options.setAppPackage("com.saucelabs.mydemoapp.android");
+                options.setAppActivity("com.saucelabs.mydemoapp.android.view.activities.SplashActivity");
                 options.setAutoGrantPermissions(Boolean.parseBoolean(ConfigReader.get("autoGrantPermissions")));
                 options.setNewCommandTimeout(Duration.ofSeconds(Long.parseLong(ConfigReader.get("newCommandTimeout"))));
                 
@@ -32,7 +34,7 @@ public class DriverFactory {
     }
 
     public static void quitDriver() {
-        if (driver != null) {
+        if (driver.get() != null) {
             driver.get().quit();
             driver.remove();
         }
