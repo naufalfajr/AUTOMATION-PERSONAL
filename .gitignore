@@ -1,0 +1,43 @@
+# Maven target directory
+/target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# App build files (if any are generated locally)
+*.apk
+*.apks
+*.ipa
+
+# Reports
+cucumber-report.html
+cucumber.json
+cucumber.xml
+
+# Node modules (if ever used for Appium helper scripts)
+node_modules/
+
+# Environment configs (optional, if you store device configs locally)
+*.properties
+*.env
