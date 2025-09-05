@@ -10,7 +10,7 @@ public class DriverFactory {
     private static final ThreadLocal<AndroidDriver> driver = new ThreadLocal<>();
 
     public static void initializeDriver() {
-        if (driver.get() == null) {
+        if (getDriver() == null) {
             try {
                 UiAutomator2Options options = new UiAutomator2Options();
                 options.setPlatformName(ConfigReader.get("platformName"));
@@ -34,8 +34,8 @@ public class DriverFactory {
     }
 
     public static void quitDriver() {
-        if (driver.get() != null) {
-            driver.get().quit();
+        if (getDriver() != null) {
+            getDriver().quit();
             driver.remove();
         }
     }
